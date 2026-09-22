@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/obrigado", "destination": "/obrigado.html" },
+    { "source": "/membros", "destination": "/index.html" },
+    { "source": "/api/webhooks/perfectpay", "destination": "/api/webhooks/perfectpay" }
+  ]
+}
