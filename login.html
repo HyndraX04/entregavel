@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Login & Cadastro | Método Canal Dark</title>
+  <meta name="description" content="Acesse ou crie sua conta na área de membros do Método Canal Dark."/>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+  
+  <!-- Fontes Oficiais -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Figtree', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              soft: '#f3c766',
+              400: '#facc15',
+              500: '#eab308',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #fde047 50%, #eab308 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-glow {
+      box-shadow: 0 0 40px -10px rgba(234, 179, 8, 0.3);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#07070a] text-gray-100 font-sans flex items-center justify-center p-4 sm:p-6 relative overflow-x-hidden selection:bg-amber-500 selection:text-black">
+
+  <!-- Luz ambiente dourada de fundo -->
+  <div class="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 blur-[150px] -z-10 rounded-full"></div>
+
+  <!-- CONTAINER CENTRAL -->
+  <div class="w-full max-w-md my-auto">
+    
+    <!-- CARD DE LOGIN & CADASTRO -->
+    <div class="rounded-3xl p-1 bg-gradient-to-b from-amber-500/35 via-white/[0.08] to-transparent shadow-2xl shadow-black">
+      <div class="rounded-[22px] bg-[#0d0d14] p-6 sm:p-8 space-y-6 border border-white/[0.05]">
+        
+        <!-- Topo com Logo e Marca -->
+        <div class="flex flex-col items-center text-center gap-2.5">
+          <div class="flex size-14 items-center justify-center rounded-2xl border border-amber-500/40 bg-gradient-to-b from-amber-500/20 to-amber-500/5 text-amber-400 shadow-lg shadow-amber-500/15">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown">
+              <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
+              <path d="M5 21h14"></path>
+            </svg>
+          </div>
+
+          <div>
+            <span class="font-display text-lg sm:text-xl font-bold tracking-wider text-white">MÉTODO CANAL DARK</span>
+            <span class="block text-[10px] font-bold uppercase tracking-[0.25em] text-amber-400/80">Dark Channel Academy</span>
+          </div>
+
+          <!-- Abas de Navegação: Entrar / Criar Conta -->
+          <div class="flex items-center p-1 rounded-xl bg-[#12121c] border border-white/[0.08] w-full mt-2">
+            <button 
+              id="tab-login-btn"
+              type="button" 
+              onclick="switchTab('login')" 
+              class="w-1/2 py-2 rounded-lg text-xs font-bold transition-all bg-gradient-to-r from-amber-500 to-yellow-400 text-black shadow-sm"
+            >
+              Já sou Aluno (Entrar)
+            </button>
+            <button 
+              id="tab-register-btn"
+              type="button" 
+              onclick="switchTab('register')" 
+              class="w-1/2 py-2 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white"
+            >
+              Criar Conta
+            </button>
+          </div>
+        </div>
+
+        <!-- FORMULÁRIO 1: LOGIN (ENTRAR) -->
+        <form id="login-form" onsubmit="handleAuthAction(event, 'login')" class="space-y-4">
+          
+          <!-- Campo E-mail -->
+          <div class="space-y-1.5">
+            <label for="login-email" class="block text-xs font-semibold text-gray-300">
+              Seu E-mail de Compra
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+              <input 
+                type="email" 
+                id="login-email" 
+                name="email" 
+                required
+                autocomplete="email"
+                placeholder="seu@email.com" 
+                class="w-full pl-10 pr-4 py-3 bg-[#12121c] border border-white/[0.08] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/70 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Campo Senha -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label for="login-password" class="block text-xs font-semibold text-gray-300">
+                Sua Senha
+              </label>
+              <button 
+                type="button" 
+                onclick="fillDefaultPassword()"
+                class="text-[11px] text-amber-400 hover:text-amber-300 font-semibold transition-colors flex items-center gap-1"
+              >
+                <span>Usar senha padrão</span>
+              </button>
+            </div>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <input 
+                type="password" 
+                id="login-password" 
+                name="password" 
+                required
+                autocomplete="current-password"
+                placeholder="Digite sua senha" 
+                class="w-full pl-10 pr-10 py-3 bg-[#12121c] border border-white/[0.08] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/70 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
+              />
+              <button 
+                type="button" 
+                onclick="togglePasswordVisibility('login-password', 'eye-icon-login')" 
+                class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-500 hover:text-gray-300 transition-colors"
+                title="Mostrar/Ocultar Senha"
+              >
+                <svg id="eye-icon-login" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Alerta de Feedback -->
+          <div id="login-alert" class="hidden text-xs py-2.5 px-3.5 rounded-xl font-medium text-center transition-all"></div>
+
+          <!-- Botão Entrar -->
+          <button 
+            type="submit" 
+            id="login-submit-btn"
+            class="w-full py-4 px-6 rounded-xl font-black text-sm bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-95 cursor-pointer"
+          >
+            <span id="login-btn-text">ENTRAR NA PLATAFORMA</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </button>
+        </form>
+
+        <!-- FORMULÁRIO 2: CADASTRO (CRIAR CONTA) -->
+        <form id="register-form" onsubmit="handleAuthAction(event, 'register')" class="space-y-4 hidden">
+          
+          <!-- Campo Nome -->
+          <div class="space-y-1.5">
+            <label for="reg-name" class="block text-xs font-semibold text-gray-300">
+              Seu Nome Completo
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="5"></circle>
+                  <path d="M20 21a8 8 0 0 0-16 0"></path>
+                </svg>
+              </div>
+              <input 
+                type="text" 
+                id="reg-name" 
+                name="name" 
+                required
+                placeholder="Ex: João Silva" 
+                class="w-full pl-10 pr-4 py-3 bg-[#12121c] border border-white/[0.08] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/70 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Campo E-mail -->
+          <div class="space-y-1.5">
+            <label for="reg-email" class="block text-xs font-semibold text-gray-300">
+              Seu E-mail
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+              <input 
+                type="email" 
+                id="reg-email" 
+                name="email" 
+                required
+                placeholder="seu@email.com" 
+                class="w-full pl-10 pr-4 py-3 bg-[#12121c] border border-white/[0.08] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/70 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Campo Senha -->
+          <div class="space-y-1.5">
+            <label for="reg-password" class="block text-xs font-semibold text-gray-300">
+              Crie sua Senha (mínimo 6 dígitos)
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <input 
+                type="password" 
+                id="reg-password" 
+                name="password" 
+                required
+                minlength="6"
+                placeholder="Crie uma senha segura" 
+                class="w-full pl-10 pr-10 py-3 bg-[#12121c] border border-white/[0.08] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/70 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
+              />
+              <button 
+                type="button" 
+                onclick="togglePasswordVisibility('reg-password', 'eye-icon-reg')" 
+                class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-500 hover:text-gray-300 transition-colors"
+                title="Mostrar/Ocultar Senha"
+              >
+                <svg id="eye-icon-reg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Alerta de Feedback Registro -->
+          <div id="register-alert" class="hidden text-xs py-2.5 px-3.5 rounded-xl font-medium text-center transition-all"></div>
+
+          <!-- Botão Criar Conta -->
+          <button 
+            type="submit" 
+            id="reg-submit-btn"
+            class="w-full py-4 px-6 rounded-xl font-black text-sm bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-95 cursor-pointer"
+          >
+            <span id="reg-btn-text">CRIAR MINHA CONTA</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Caixa de Primeiro Acesso (Discreta e Útil) -->
+        <div id="default-password-box" class="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-3.5 flex items-center justify-between text-xs">
+          <div class="space-y-0.5">
+            <span class="text-gray-400 block text-[11px]">Comprou na PerfectPay? Senha padrão:</span>
+            <span class="font-mono font-bold text-yellow-400 tracking-wider">CANALDARK123</span>
+          </div>
+          <button 
+            type="button" 
+            onclick="fillDefaultPassword()"
+            class="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black font-bold text-[11px] transition-colors border border-amber-500/30"
+          >
+            Preencher
+          </button>
+        </div>
+
+        <!-- Suporte e Ajuda -->
+        <div class="pt-2 border-t border-white/[0.06] flex items-center justify-center gap-1.5 text-xs text-gray-400 text-center">
+          <span>Dúvidas com o login?</span>
+          <a 
+            href="https://api.whatsapp.com" 
+            target="_blank" 
+            class="text-amber-400 hover:underline font-semibold"
+          >
+            Suporte no WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FIREBASE WEB SDK (MODULAR) & LÓGICA DE AUTENTICAÇÃO REAL -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import { 
+      getAuth, 
+      signInWithEmailAndPassword, 
+      createUserWithEmailAndPassword, 
+      updateProfile 
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+    import { 
+      getFirestore, 
+      doc, 
+      getDoc, 
+      setDoc, 
+      serverTimestamp 
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    // Credenciais oficiais do projeto metodo-canal-dark
+    const firebaseConfig = {
+      apiKey: "AIzaSyBMAHm1NsA46HRtiIzobd8QgYPhETqY92w",
+      authDomain: "metodo-canal-dark.firebaseapp.com",
+      projectId: "metodo-canal-dark",
+      storageBucket: "metodo-canal-dark.firebasestorage.app",
+      messagingSenderId: "46904346631",
+      appId: "1:46904346631:web:bb61d275886ca13fbf42a2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Exporta para escopo global das funções do formulário
+    window.firebaseAuth = auth;
+    window.firebaseDb = db;
+    window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+    window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+    window.updateProfile = updateProfile;
+    window.doc = doc;
+    window.getDoc = getDoc;
+    window.setDoc = setDoc;
+    window.serverTimestamp = serverTimestamp;
+  </script>
+
+  <script>
+    // Alternar entre Entrar e Criar Conta
+    function switchTab(tab) {
+      const loginForm = document.getElementById('login-form');
+      const registerForm = document.getElementById('register-form');
+      const tabLoginBtn = document.getElementById('tab-login-btn');
+      const tabRegisterBtn = document.getElementById('tab-register-btn');
+      const defaultPassBox = document.getElementById('default-password-box');
+
+      if (tab === 'login') {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        defaultPassBox.classList.remove('hidden');
+
+        tabLoginBtn.className = "w-1/2 py-2 rounded-lg text-xs font-bold transition-all bg-gradient-to-r from-amber-500 to-yellow-400 text-black shadow-sm";
+        tabRegisterBtn.className = "w-1/2 py-2 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white";
+      } else {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        defaultPassBox.classList.add('hidden');
+
+        tabRegisterBtn.className = "w-1/2 py-2 rounded-lg text-xs font-bold transition-all bg-gradient-to-r from-amber-500 to-yellow-400 text-black shadow-sm";
+        tabLoginBtn.className = "w-1/2 py-2 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white";
+      }
+    }
+
+    // Auto-preenchimento de email via URL
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const emailParam = urlParams.get('email');
+      if (emailParam) {
+        const loginEmail = document.getElementById('login-email');
+        const regEmail = document.getElementById('reg-email');
+        if (loginEmail) loginEmail.value = emailParam;
+        if (regEmail) regEmail.value = emailParam;
+      }
+    });
+
+    function togglePasswordVisibility(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerHTML = `
+          <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+          <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+          <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+          <line x1="2" x2="22" y1="2" y2="22"></line>
+        `;
+      } else {
+        input.type = 'password';
+        icon.innerHTML = `
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        `;
+      }
+    }
+
+    function fillDefaultPassword() {
+      const pass = document.getElementById('login-password');
+      pass.value = 'CANALDARK123';
+      pass.focus();
+    }
+
+    // Processamento de Login e Cadastro no Firebase
+    async function handleAuthAction(event, mode) {
+      event.preventDefault();
+      
+      const auth = window.firebaseAuth;
+      const db = window.firebaseDb;
+
+      if (mode === 'login') {
+        const email = document.getElementById('login-email').value.trim().toLowerCase();
+        const password = document.getElementById('login-password').value.trim();
+        const alertBox = document.getElementById('login-alert');
+        const submitBtn = document.getElementById('login-submit-btn');
+        const btnText = document.getElementById('login-btn-text');
+
+        btnText.textContent = 'Autenticando no Firebase...';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-80');
+        alertBox.classList.add('hidden');
+
+        try {
+          let userCredential;
+          try {
+            // 1. Tenta Login no Firebase Auth
+            userCredential = await window.signInWithEmailAndPassword(auth, email, password);
+          } catch (loginErr) {
+            // 2. Se a conta não foi encontrada mas a senha informada for a senha padrão de compra (CANALDARK123), cria o acesso automaticamente
+            if ((loginErr.code === 'auth/user-not-found' || loginErr.code === 'auth/invalid-credential') && password === 'CANALDARK123') {
+              userCredential = await window.createUserWithEmailAndPassword(auth, email, password);
+              
+              // Cria documento no Firestore
+              if (db) {
+                await window.setDoc(window.doc(db, 'users', userCredential.user.uid), {
+                  email: email,
+                  name: email.split('@')[0],
+                  role: 'student',
+                  status: 'active',
+                  hasActiveAccess: true,
+                  tier: 'premium',
+                  createdAt: window.serverTimestamp()
+                }, { merge: true });
+              }
+            } else {
+              throw loginErr;
+            }
+          }
+
+          const user = userCredential.user;
+
+          // 3. Registra / atualiza perfil no Firestore
+          if (db) {
+            try {
+              await window.setDoc(window.doc(db, 'users', user.uid), {
+                email: user.email,
+                lastLogin: window.serverTimestamp(),
+                hasActiveAccess: true,
+                status: 'active'
+              }, { merge: true });
+            } catch(dbErr) {
+              console.warn('Firestore doc sync:', dbErr);
+            }
+          }
+
+          // 4. Salva sessão local
+          localStorage.setItem('canaldark_logged_in', 'true');
+          localStorage.setItem('canaldark_user_email', user.email);
+          localStorage.setItem('canaldark_uid', user.uid);
+
+          alertBox.className = 'text-xs py-2.5 px-3.5 rounded-xl font-medium text-center bg-emerald-500/15 border border-emerald-500/30 text-emerald-300';
+          alertBox.textContent = 'Acesso liberado no Firebase! Entrando na área de membros...';
+          alertBox.classList.remove('hidden');
+
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 600);
+
+        } catch (error) {
+          console.error('Auth error:', error);
+          alertBox.className = 'text-xs py-2.5 px-3.5 rounded-xl font-medium text-center bg-red-500/15 border border-red-500/30 text-red-300';
+          
+          if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
+            alertBox.textContent = 'E-mail ou senha incorretos. A senha inicial é CANALDARK123';
+          } else if (error.code === 'auth/user-not-found') {
+            alertBox.textContent = 'Usuário não encontrado. Use a aba "Criar Conta" acima.';
+          } else if (error.code === 'auth/too-many-requests') {
+            alertBox.textContent = 'Muitas tentativas. Aguarde alguns segundos e tente novamente.';
+          } else {
+            alertBox.textContent = error.message || 'Erro ao autenticar. Tente novamente.';
+          }
+          
+          alertBox.classList.remove('hidden');
+          btnText.textContent = 'ENTRAR NA PLATAFORMA';
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-80');
+        }
+
+      } else if (mode === 'register') {
+        const name = document.getElementById('reg-name').value.trim();
+        const email = document.getElementById('reg-email').value.trim().toLowerCase();
+        const password = document.getElementById('reg-password').value.trim();
+        const alertBox = document.getElementById('register-alert');
+        const submitBtn = document.getElementById('reg-submit-btn');
+        const btnText = document.getElementById('reg-btn-text');
+
+        btnText.textContent = 'Criando sua conta...';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-80');
+        alertBox.classList.add('hidden');
+
+        try {
+          // 1. Cria usuário no Firebase Authentication
+          const userCredential = await window.createUserWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+
+          // 2. Atualiza nome de exibição no Auth
+          if (window.updateProfile) {
+            await window.updateProfile(user, { displayName: name });
+          }
+
+          // 3. Grava no Cloud Firestore (/users/{userId})
+          if (db) {
+            await window.setDoc(window.doc(db, 'users', user.uid), {
+              name: name,
+              email: email,
+              role: 'student',
+              status: 'active',
+              hasActiveAccess: true,
+              tier: 'premium',
+              createdAt: window.serverTimestamp(),
+              source: 'manual_signup'
+            }, { merge: true });
+          }
+
+          // 4. Salva sessão local
+          localStorage.setItem('canaldark_logged_in', 'true');
+          localStorage.setItem('canaldark_user_email', user.email);
+          localStorage.setItem('canaldark_user_name', name);
+          localStorage.setItem('canaldark_uid', user.uid);
+
+          alertBox.className = 'text-xs py-2.5 px-3.5 rounded-xl font-medium text-center bg-emerald-500/15 border border-emerald-500/30 text-emerald-300';
+          alertBox.textContent = 'Conta criada com sucesso no Firebase! Acessando plataforma...';
+          alertBox.classList.remove('hidden');
+
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 800);
+
+        } catch (error) {
+          console.error('Registration error:', error);
+          alertBox.className = 'text-xs py-2.5 px-3.5 rounded-xl font-medium text-center bg-red-500/15 border border-red-500/30 text-red-300';
+
+          if (error.code === 'auth/email-already-in-use') {
+            alertBox.textContent = 'Este e-mail já está cadastrado. Clique em "Já sou Aluno (Entrar)" acima.';
+          } else if (error.code === 'auth/weak-password') {
+            alertBox.textContent = 'A senha deve ter pelo menos 6 caracteres.';
+          } else {
+            alertBox.textContent = error.message || 'Erro ao criar conta no Firebase.';
+          }
+
+          alertBox.classList.remove('hidden');
+          btnText.textContent = 'CRIAR MINHA CONTA';
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('opacity-80');
+        }
+      }
+    }
+  </script>
+</body>
+</html>

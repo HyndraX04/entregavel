@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bem-vindo! | Método Canal Dark</title>
+  <meta name="description" content="Seu acesso ao Método Canal Dark está liberado."/>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+  
+  <!-- Fontes Oficiais -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Figtree', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              soft: '#f3c766',
+              400: '#facc15',
+              500: '#eab308',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fffbeb 0%, #fde047 40%, #eab308 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#07070a] text-gray-100 font-sans flex flex-col items-center justify-center p-4 sm:p-6 relative overflow-x-hidden selection:bg-amber-500 selection:text-black">
+
+  <!-- Luz ambiente sutil no fundo -->
+  <div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-amber-500/10 blur-[140px] -z-10 rounded-full"></div>
+
+  <!-- CARD ÚNICO, CLEAN E ELEGANTE -->
+  <div class="w-full max-w-lg rounded-3xl p-1 bg-gradient-to-b from-amber-500/30 via-white/[0.08] to-transparent shadow-2xl shadow-black">
+    <div class="rounded-[22px] bg-[#0d0d14] p-6 sm:p-10 space-y-7 border border-white/[0.05] text-center">
+      
+      <!-- Logo Central e Status -->
+      <div class="flex flex-col items-center gap-3">
+        <div class="flex size-12 items-center justify-center rounded-2xl border border-amber-500/40 bg-amber-500/10 text-amber-400 shadow-md shadow-amber-500/10">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crown">
+            <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
+            <path d="M5 21h14"></path>
+          </svg>
+        </div>
+
+        <div>
+          <span class="font-display text-lg font-bold tracking-wider text-white">MÉTODO CANAL DARK</span>
+          <span class="block text-[10px] font-bold uppercase tracking-[0.25em] text-gray-400">Dark Channel Academy</span>
+        </div>
+
+        <!-- Pill de Sucesso -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold mt-1">
+          <span class="size-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Compra Aprovada com Sucesso</span>
+        </div>
+      </div>
+
+      <!-- Título Principal -->
+      <div class="space-y-2">
+        <h1 class="font-display text-2xl sm:text-3xl font-extrabold text-white">
+          Seu acesso foi <span class="gold-gradient-text">liberado</span>!
+        </h1>
+        <p class="text-xs sm:text-sm text-gray-400 max-w-sm mx-auto leading-relaxed">
+          Sua conta já está pronta. Use os dados abaixo para fazer o login e começar:
+        </p>
+      </div>
+
+      <!-- Caixa de Credenciais (Super Clean) -->
+      <div class="rounded-2xl border border-white/[0.08] bg-[#12121c] p-4 sm:p-5 space-y-3.5 text-left">
+        
+        <!-- Linha E-mail -->
+        <div class="flex items-center justify-between pb-3 border-b border-white/[0.06] text-xs">
+          <span class="text-gray-400 font-medium">E-mail:</span>
+          <span class="text-white font-semibold">O mesmo usado na compra</span>
+        </div>
+
+        <!-- Linha Senha com Copiar -->
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-gray-400 font-medium">Senha padrão:</span>
+          <div class="flex items-center gap-2">
+            <span class="font-mono font-bold text-sm text-yellow-400 tracking-wider">CANALDARK123</span>
+            <button 
+              onclick="copyPassword()" 
+              id="copy-btn"
+              class="px-2.5 py-1 rounded-md bg-amber-500/15 hover:bg-amber-500 text-amber-300 hover:text-black border border-amber-500/30 text-[11px] font-bold transition-all active:scale-95"
+            >
+              <span id="copy-label">Copiar</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botão Único de Ação (Dourado Elegante) -->
+      <div class="space-y-3">
+        <a 
+          href="login.html" 
+          class="w-full py-4 px-6 rounded-xl font-black text-sm sm:text-base bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-95"
+        >
+          <span>ENTRAR NA PLATAFORMA</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+
+        <!-- Aviso Discreto de E-mail e Suporte -->
+        <p class="text-[11px] text-gray-400 leading-relaxed">
+          Enviamos esses dados para o seu e-mail. Se não achar, veja no <strong>Spam / Promoções</strong>.
+        </p>
+      </div>
+
+      <!-- Suporte Discreto no Rodapé do Card -->
+      <div class="pt-3 border-t border-white/[0.06] flex items-center justify-center gap-1.5 text-xs text-gray-400">
+        <span>Dúvidas com o acesso?</span>
+        <a 
+          href="https://api.whatsapp.com" 
+          target="_blank" 
+          class="text-amber-400 hover:underline font-semibold"
+        >
+          Falar no WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function copyPassword() {
+      navigator.clipboard.writeText("CANALDARK123").then(() => {
+        const label = document.getElementById("copy-label");
+        const btn = document.getElementById("copy-btn");
+        label.textContent = "Copiado!";
+        btn.classList.add("bg-emerald-500", "text-black", "border-emerald-400");
+        btn.classList.remove("bg-amber-500/15", "text-amber-300", "border-amber-500/30");
+        
+        setTimeout(() => {
+          label.textContent = "Copiar";
+          btn.classList.remove("bg-emerald-500", "text-black", "border-emerald-400");
+          btn.classList.add("bg-amber-500/15", "text-amber-300", "border-amber-500/30");
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
