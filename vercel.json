@@ -1,6 +1,7 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "outputDirectory": "dist",
   "rewrites": [
     { "source": "/chatfn", "destination": "/chatfn/index.html" },
     { "source": "/chatfn/(.*)", "destination": "/chatfn/$1" },
