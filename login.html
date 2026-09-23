@@ -72,6 +72,20 @@
             <span class="block text-[10px] font-bold uppercase tracking-[0.25em] text-amber-400/80">Dark Channel Academy</span>
           </div>
 
+          <!-- Banner caso já esteja autenticado -->
+          <div id="already-logged-in-notice" class="hidden w-full p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-left my-1">
+            <div class="flex items-center justify-between gap-2">
+              <div class="min-w-0">
+                <p class="text-[11px] font-bold text-gray-300">Conectado atualmente:</p>
+                <p class="text-xs text-amber-400 font-mono truncate" id="logged-user-email"></p>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <a href="/" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">Acessar</a>
+                <button type="button" onclick="logoutFromLogin()" class="px-2 py-1.5 text-xs text-gray-400 hover:text-white underline">Sair</button>
+              </div>
+            </div>
+          </div>
+
           <!-- Abas de Navegação: Entrar / Criar Conta -->
           <div class="flex items-center p-1 rounded-xl bg-[#12121c] border border-white/[0.08] w-full mt-2">
             <button 
@@ -381,8 +395,19 @@
       }
     }
 
-    // Auto-preenchimento de email via URL
+    // Auto-preenchimento e status de login
     window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const loggedIn = localStorage.getItem('canaldark_logged_in');
+        const userEmail = localStorage.getItem('canaldark_user_email');
+        const notice = document.getElementById('already-logged-in-notice');
+        if (loggedIn === 'true' && userEmail && notice) {
+          const userEmailEl = document.getElementById('logged-user-email');
+          if (userEmailEl) userEmailEl.textContent = userEmail;
+          notice.classList.remove('hidden');
+        }
+      } catch(e) {}
+
       const urlParams = new URLSearchParams(window.location.search);
       const emailParam = urlParams.get('email');
       if (emailParam) {
@@ -392,6 +417,17 @@
         if (regEmail) regEmail.value = emailParam;
       }
     });
+
+    function logoutFromLogin() {
+      try {
+        localStorage.removeItem('canaldark_logged_in');
+        localStorage.removeItem('canaldark_user_email');
+        localStorage.removeItem('canaldark_user_name');
+        localStorage.removeItem('canaldark_uid');
+      } catch(e) {}
+      const notice = document.getElementById('already-logged-in-notice');
+      if (notice) notice.classList.add('hidden');
+    }
 
     function togglePasswordVisibility(inputId, iconId) {
       const input = document.getElementById(inputId);
@@ -491,7 +527,7 @@
           alertBox.classList.remove('hidden');
 
           setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = '/';
           }, 600);
 
         } catch (error) {
@@ -562,7 +598,7 @@
           alertBox.classList.remove('hidden');
 
           setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = '/';
           }, 800);
 
         } catch (error) {
