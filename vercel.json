@@ -2,26 +2,6 @@
   "version": 2,
   "cleanUrls": true,
   "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "chatfn\\..*"
-        }
-      ],
-      "destination": "/chatfn/index.html"
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "chatfn\\..*"
-        }
-      ],
-      "destination": "/chatfn/$1"
-    },
     { "source": "/chatfn", "destination": "/chatfn/index.html" },
     { "source": "/chatfn/(.*)", "destination": "/chatfn/$1" },
     { "source": "/login", "destination": "/login.html" },
