@@ -86,24 +86,10 @@
             </div>
           </div>
 
-          <!-- Abas de Navegação: Entrar / Criar Conta -->
-          <div class="flex items-center p-1 rounded-xl bg-[#12121c] border border-white/[0.08] w-full mt-2">
-            <button 
-              id="tab-login-btn"
-              type="button" 
-              onclick="switchTab('login')" 
-              class="w-1/2 py-2 rounded-lg text-xs font-bold transition-all bg-gradient-to-r from-amber-500 to-yellow-400 text-black shadow-sm"
-            >
-              Já sou Aluno (Entrar)
-            </button>
-            <button 
-              id="tab-register-btn"
-              type="button" 
-              onclick="switchTab('register')" 
-              class="w-1/2 py-2 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white"
-            >
-              Criar Conta
-            </button>
+          <!-- Identificação de Acesso Aluno -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-300 text-xs font-semibold mt-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            <span>Área Exclusiva para Alunos</span>
           </div>
         </div>
 
@@ -191,107 +177,6 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="m9 18 6-6-6-6"></path>
             </svg>
-          </button>
-        </form>
-
-        <!-- FORMULÁRIO 2: CADASTRO (CRIAR CONTA) -->
-        <form id="register-form" onsubmit="handleAuthAction(event, 'register')" class="space-y-4 hidden">
-          
-          <!-- Campo Nome -->
-          <div class="space-y-1.5">
-            <label for="reg-name" class="block text-xs font-semibold text-gray-300">
-              Seu Nome Completo
-            </label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="8" r="5"></circle>
-                  <path d="M20 21a8 8 0 0 0-16 0"></path>
-                </svg>
-              </div>
-              <input 
-                type="text" 
-                id="reg-name" 
-                name="name" 
-                required
-                placeholder="Ex: João Silva" 
-                class="w-full pl-10 pr-4 py-3 bg-[#12121c] border border-white/[0.08] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/70 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
-              />
-            </div>
-          </div>
-
-          <!-- Campo E-mail -->
-          <div class="space-y-1.5">
-            <label for="reg-email" class="block text-xs font-semibold text-gray-300">
-              Seu E-mail
-            </label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                </svg>
-              </div>
-              <input 
-                type="email" 
-                id="reg-email" 
-                name="email" 
-                required
-                placeholder="seu@email.com" 
-                class="w-full pl-10 pr-4 py-3 bg-[#12121c] border border-white/[0.08] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/70 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
-              />
-            </div>
-          </div>
-
-          <!-- Campo Senha -->
-          <div class="space-y-1.5">
-            <label for="reg-password" class="block text-xs font-semibold text-gray-300">
-              Crie sua Senha (mínimo 6 dígitos)
-            </label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-              </div>
-              <input 
-                type="password" 
-                id="reg-password" 
-                name="password" 
-                required
-                minlength="6"
-                placeholder="Crie uma senha segura" 
-                class="w-full pl-10 pr-10 py-3 bg-[#12121c] border border-white/[0.08] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/70 rounded-xl text-sm text-white placeholder-gray-500 outline-none transition-all"
-              />
-              <button 
-                type="button" 
-                onclick="togglePasswordVisibility('reg-password', 'eye-icon-reg')" 
-                class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-500 hover:text-gray-300 transition-colors"
-                title="Mostrar/Ocultar Senha"
-              >
-                <svg id="eye-icon-reg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- Alerta de Feedback Registro -->
-          <div id="register-alert" class="hidden text-xs py-2.5 px-3.5 rounded-xl font-medium text-center transition-all"></div>
-
-          <!-- Botão Criar Conta -->
-          <button 
-            type="submit" 
-            id="reg-submit-btn"
-            class="w-full py-4 px-6 rounded-xl font-black text-sm bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-95 cursor-pointer"
-          >
-            <span id="reg-btn-text">CRIAR MINHA CONTA</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m9 18 6-6-6-6"></path>
-            </svg>
-          </button>
         </form>
 
         <!-- Caixa de Primeiro Acesso (Discreta e Útil) -->
@@ -370,31 +255,6 @@
   </script>
 
   <script>
-    // Alternar entre Entrar e Criar Conta
-    function switchTab(tab) {
-      const loginForm = document.getElementById('login-form');
-      const registerForm = document.getElementById('register-form');
-      const tabLoginBtn = document.getElementById('tab-login-btn');
-      const tabRegisterBtn = document.getElementById('tab-register-btn');
-      const defaultPassBox = document.getElementById('default-password-box');
-
-      if (tab === 'login') {
-        loginForm.classList.remove('hidden');
-        registerForm.classList.add('hidden');
-        defaultPassBox.classList.remove('hidden');
-
-        tabLoginBtn.className = "w-1/2 py-2 rounded-lg text-xs font-bold transition-all bg-gradient-to-r from-amber-500 to-yellow-400 text-black shadow-sm";
-        tabRegisterBtn.className = "w-1/2 py-2 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white";
-      } else {
-        loginForm.classList.add('hidden');
-        registerForm.classList.remove('hidden');
-        defaultPassBox.classList.add('hidden');
-
-        tabRegisterBtn.className = "w-1/2 py-2 rounded-lg text-xs font-bold transition-all bg-gradient-to-r from-amber-500 to-yellow-400 text-black shadow-sm";
-        tabLoginBtn.className = "w-1/2 py-2 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white";
-      }
-    }
-
     // Auto-preenchimento e status de login
     window.addEventListener('DOMContentLoaded', () => {
       try {
@@ -412,9 +272,7 @@
       const emailParam = urlParams.get('email');
       if (emailParam) {
         const loginEmail = document.getElementById('login-email');
-        const regEmail = document.getElementById('reg-email');
         if (loginEmail) loginEmail.value = emailParam;
-        if (regEmail) regEmail.value = emailParam;
       }
     });
 
@@ -537,7 +395,7 @@
           if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
             alertBox.textContent = 'E-mail ou senha incorretos. A senha inicial é CANALDARK123';
           } else if (error.code === 'auth/user-not-found') {
-            alertBox.textContent = 'Usuário não encontrado. Use a aba "Criar Conta" acima.';
+            alertBox.textContent = 'Acesso não encontrado com este e-mail. Verifique a digitação ou chame o suporte abaixo.';
           } else if (error.code === 'auth/too-many-requests') {
             alertBox.textContent = 'Muitas tentativas. Aguarde alguns segundos e tente novamente.';
           } else {
@@ -546,75 +404,6 @@
           
           alertBox.classList.remove('hidden');
           btnText.textContent = 'ENTRAR NA PLATAFORMA';
-          submitBtn.disabled = false;
-          submitBtn.classList.remove('opacity-80');
-        }
-
-      } else if (mode === 'register') {
-        const name = document.getElementById('reg-name').value.trim();
-        const email = document.getElementById('reg-email').value.trim().toLowerCase();
-        const password = document.getElementById('reg-password').value.trim();
-        const alertBox = document.getElementById('register-alert');
-        const submitBtn = document.getElementById('reg-submit-btn');
-        const btnText = document.getElementById('reg-btn-text');
-
-        btnText.textContent = 'Criando sua conta...';
-        submitBtn.disabled = true;
-        submitBtn.classList.add('opacity-80');
-        alertBox.classList.add('hidden');
-
-        try {
-          // 1. Cria usuário no Firebase Authentication
-          const userCredential = await window.createUserWithEmailAndPassword(auth, email, password);
-          const user = userCredential.user;
-
-          // 2. Atualiza nome de exibição no Auth
-          if (window.updateProfile) {
-            await window.updateProfile(user, { displayName: name });
-          }
-
-          // 3. Grava no Cloud Firestore (/users/{userId})
-          if (db) {
-            await window.setDoc(window.doc(db, 'users', user.uid), {
-              name: name,
-              email: email,
-              role: 'student',
-              status: 'active',
-              hasActiveAccess: true,
-              tier: 'premium',
-              createdAt: window.serverTimestamp(),
-              source: 'manual_signup'
-            }, { merge: true });
-          }
-
-          // 4. Salva sessão local
-          localStorage.setItem('canaldark_logged_in', 'true');
-          localStorage.setItem('canaldark_user_email', user.email);
-          localStorage.setItem('canaldark_user_name', name);
-          localStorage.setItem('canaldark_uid', user.uid);
-
-          alertBox.className = 'text-xs py-2.5 px-3.5 rounded-xl font-medium text-center bg-emerald-500/15 border border-emerald-500/30 text-emerald-300';
-          alertBox.textContent = 'Conta criada com sucesso no Firebase! Acessando plataforma...';
-          alertBox.classList.remove('hidden');
-
-          setTimeout(() => {
-            window.location.href = '/';
-          }, 800);
-
-        } catch (error) {
-          console.error('Registration error:', error);
-          alertBox.className = 'text-xs py-2.5 px-3.5 rounded-xl font-medium text-center bg-red-500/15 border border-red-500/30 text-red-300';
-
-          if (error.code === 'auth/email-already-in-use') {
-            alertBox.textContent = 'Este e-mail já está cadastrado. Clique em "Já sou Aluno (Entrar)" acima.';
-          } else if (error.code === 'auth/weak-password') {
-            alertBox.textContent = 'A senha deve ter pelo menos 6 caracteres.';
-          } else {
-            alertBox.textContent = error.message || 'Erro ao criar conta no Firebase.';
-          }
-
-          alertBox.classList.remove('hidden');
-          btnText.textContent = 'CRIAR MINHA CONTA';
           submitBtn.disabled = false;
           submitBtn.classList.remove('opacity-80');
         }
