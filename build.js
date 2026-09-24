@@ -24,7 +24,7 @@ if (fs.existsSync('chatfn')) {
 }
 
 // Copia páginas HTML e ícone
-const filesToCopy = ['index.html', 'login.html', 'obrigado.html', 'favicon.ico'];
+const filesToCopy = ['index.html', 'login.html', 'obrigado.html', 'favicon.ico', 'favicon.svg', 'favicon.png', 'apple-touch-icon.png'];
 
 for (const file of filesToCopy) {
   if (fs.existsSync(file)) {
