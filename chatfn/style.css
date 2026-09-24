@@ -48,7 +48,7 @@ body, html {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('assets/background.png');
+  background-image: url('/chatfn/assets/background.png');
   background-repeat: repeat;
   background-size: 320px;
   opacity: 0.5;

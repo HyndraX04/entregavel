@@ -7,12 +7,12 @@ window.FUNIL_CONFIG = {
   // Informações do Perfil do WhatsApp
   profile: {
     name: "Chapéu Preto",
-    avatar: "assets/avatar.png",
+    avatar: "/chatfn/assets/avatar.png",
     verified: true, // Exibe o selo verde de verificado
     statusOnline: "Online",
     statusTyping: "digitando...",
     businessMessage: "Esta é uma conta comercial",
-    notificationSound: "" // Deixe vazio para desativar o som (ou "assets/notification.mp3" para ativar)
+    notificationSound: "" // Deixe vazio para desativar o som (ou "/chatfn/assets/notification.mp3" para ativar)
   },
 
   // Link de Redirecionamento Final (Checkout / Oferta)
@@ -59,8 +59,8 @@ window.FUNIL_CONFIG = {
         { type: "text", text: "Boa!" },
         { type: "text", text: "Esse método já ajudou muitas pessoas a <b>ganhar dinheiro com canais dark</b> totalmente do zero e sem precisar mostrar o rosto! 🤑" },
         { type: "text", text: "Olha só as pessoas que lucraram! 👀" },
-        { type: "image", src: "assets/print1.jpg", alt: "Comprovante de Lucro 1" },
-        { type: "image", src: "assets/print2.jpg", alt: "Comprovante de Lucro 2" },
+        { type: "image", src: "/chatfn/assets/print1.jpg", alt: "Comprovante de Lucro 1" },
+        { type: "image", src: "/chatfn/assets/print2.jpg", alt: "Comprovante de Lucro 2" },
         { type: "text", text: "E aí, quer aprender esse método de canal dark?" }
       ],
       input: {

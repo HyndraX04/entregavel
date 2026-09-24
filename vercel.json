@@ -4,7 +4,11 @@
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/chatfn", "destination": "/chatfn/index.html" },
+    { "source": "/chatfn/", "destination": "/chatfn/index.html" },
     { "source": "/chatfn/(.*)", "destination": "/chatfn/$1" },
+    { "source": "/style.css", "destination": "/chatfn/style.css" },
+    { "source": "/script.js", "destination": "/chatfn/script.js" },
+    { "source": "/config.js", "destination": "/chatfn/config.js" },
     { "source": "/login", "destination": "/login.html" },
     { "source": "/obrigado", "destination": "/obrigado.html" },
     { "source": "/membros", "destination": "/index.html" },
