@@ -44,7 +44,7 @@ entregavel/
         ├── Navbar.tsx        # Topbar com status do membro e acesso premium
         ├── HeroSection.tsx   # Banner motivacional, progresso e card "Última aula"
         ├── ModulesSection.tsx# Grid dos 4 módulos com expansão e checklist
-        ├── OffersSection.tsx # Ofertas exclusivas (Pack Roteiros & Kit Visual)
+        ├── OffersSection.tsx # Ofertas exclusivas (Vídeos Virais & Kit Visual)
         ├── LessonModal.tsx   # Player interativo de aula com progresso e notas
         ├── CheckoutModal.tsx # Checkout com simulação PIX e Cartão
         └── Footer.tsx        # Rodapé oficial da academia
