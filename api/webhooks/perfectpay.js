@@ -141,21 +141,112 @@ async function sendWelcomeEmail({ to, name, password, loginUrl }) {
   const body = {
     from: fromEmail,
     to: [to],
-    subject: 'Seu acesso ao Método Canal Dark está liberado! 🚀',
+    subject: '🔥 Seu acesso ao Método Canal Dark está liberado!',
     html: `
-      <div style="font-family: Arial, sans-serif; background: #0c0c11; color: #fff; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #facc15; font-size: 22px; text-transform: uppercase;">MÉTODO CANAL DARK</h1>
-        <p style="color: #bbb; font-size: 14px;">Dark Channel Academy</p>
-        <hr style="border: 0; border-top: 1px solid #232336; margin: 20px 0;" />
-        <p>Olá, <strong>${name || 'Membro'}</strong>!</p>
-        <p>Seu pagamento foi confirmado com sucesso. Aqui estão seus dados de acesso exclusivos:</p>
-        <div style="background: #161622; border: 1px solid #ca8a04; border-radius: 8px; padding: 15px; margin: 20px 0;">
-          <p style="margin: 5px 0;"><strong>Link da Área de Membros:</strong> <a href="${loginUrl}" style="color: #facc15;">${loginUrl}</a></p>
-          <p style="margin: 5px 0;"><strong>E-mail:</strong> ${to}</p>
-          <p style="margin: 5px 0;"><strong>Senha Inicial:</strong> <code style="background: #000; padding: 3px 6px; border-radius: 4px; color: #facc15;">${password}</code></p>
-        </div>
-        <p style="color: #999; font-size: 12px;">Recomendamos alterar sua senha após o primeiro acesso.</p>
-      </div>
+      <!DOCTYPE html>
+      <html lang="pt-BR">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Acesso Liberado | Método Canal Dark</title>
+      </head>
+      <body style="margin: 0; padding: 20px; background-color: #07070a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #f3f4f6;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; margin: 0 auto; background-color: #0e0e15; border-radius: 20px; border: 1px solid rgba(234, 179, 8, 0.25); overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
+          
+          <!-- Topo com Logo e Marca -->
+          <tr>
+            <td align="center" style="padding: 40px 30px 20px; background: linear-gradient(180deg, rgba(234, 179, 8, 0.12) 0%, rgba(14, 14, 21, 0) 100%);">
+              <div style="display: inline-block; width: 56px; height: 56px; line-height: 56px; border-radius: 16px; background-color: rgba(234, 179, 8, 0.15); border: 1px solid rgba(234, 179, 8, 0.4); text-align: center; margin-bottom: 12px;">
+                <span style="font-size: 26px;">👑</span>
+              </div>
+              <h1 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: 2px; color: #ffffff; text-transform: uppercase;">MÉTODO CANAL DARK</h1>
+              <p style="margin: 4px 0 0; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: #eab308; text-transform: uppercase;">Dark Channel Academy</p>
+            </td>
+          </tr>
+
+          <!-- Mensagem Principal -->
+          <tr>
+            <td style="padding: 10px 35px 25px;">
+              <div style="background-color: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 50px; padding: 6px 16px; display: inline-block; margin-bottom: 16px;">
+                <span style="font-size: 12px; font-weight: 700; color: #34d399;">✓ Pagamento Confirmado com Sucesso</span>
+              </div>
+
+              <h2 style="margin: 0 0 12px; font-size: 24px; font-weight: 700; color: #ffffff;">
+                Parabéns pela decisão, <span style="color: #facc15;">${name || 'Membro'}</span>!
+              </h2>
+              <p style="margin: 0 0 20px; font-size: 14px; line-height: 1.6; color: #9ca3af;">
+                Seu acesso à plataforma exclusiva do <strong>Método Canal Dark</strong> já foi criado e liberado. A partir de agora, você tem tudo o que precisa para construir e escalar seus canais sem aparecer.
+              </p>
+
+              <!-- Card de Credenciais -->
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #14141f; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.08); margin-bottom: 25px;">
+                <tr>
+                  <td style="padding: 22px;">
+                    <p style="margin: 0 0 16px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #eab308;">
+                      🔑 Seus Dados de Acesso
+                    </p>
+                    
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="padding-bottom: 12px; font-size: 13px; color: #9ca3af;" width="40%">Link da Plataforma:</td>
+                        <td style="padding-bottom: 12px; font-size: 13px; font-weight: 600; color: #facc15;" width="60%">
+                          <a href="${loginUrl}" style="color: #facc15; text-decoration: underline;">${loginUrl}</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 12px; font-size: 13px; color: #9ca3af;">Seu E-mail:</td>
+                        <td style="padding-bottom: 12px; font-size: 13px; font-weight: 700; color: #ffffff;">${to}</td>
+                      </tr>
+                      <tr>
+                        <td style="font-size: 13px; color: #9ca3af;">Senha Inicial:</td>
+                        <td style="font-size: 14px; font-weight: 800; font-family: monospace; color: #facc15; background-color: rgba(234, 179, 8, 0.1); padding: 4px 8px; border-radius: 6px; display: inline-block;">
+                          ${password}
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Botão Principal de Acesso -->
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 25px;">
+                <tr>
+                  <td align="center">
+                    <a href="${loginUrl}" style="display: block; width: 100%; box-sizing: border-box; background: linear-gradient(135deg, #f59e0b 0%, #eab308 50%, #facc15 100%); color: #000000; text-decoration: none; font-size: 15px; font-weight: 900; letter-spacing: 0.5px; padding: 18px 24px; border-radius: 14px; text-align: center; box-shadow: 0 6px 25px rgba(234, 179, 8, 0.35);">
+                      ACESSAR ÁREA DE MEMBROS AGORA →
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Dicas de Acesso -->
+              <div style="background-color: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+                <p style="margin: 0 0 8px; font-size: 12px; font-weight: 700; color: #ffffff;">📌 Como começar agora mesmo:</p>
+                <ol style="margin: 0; padding-left: 20px; font-size: 12px; color: #9ca3af; line-height: 1.6;">
+                  <li>Clique no botão dourado acima para abrir a tela de login.</li>
+                  <li>Insira o seu e-mail (<strong>${to}</strong>) e a senha (<strong>${password}</strong>).</li>
+                  <li>Inicie imediatamente pelo <strong>Módulo 01: Fundamentos do Canal Dark</strong>.</li>
+                </ol>
+              </div>
+
+              <!-- Suporte -->
+              <p style="margin: 0; font-size: 12px; color: #6b7280; text-align: center; line-height: 1.5;">
+                Dúvidas ou precisa de ajuda com o seu login?<br>
+                Nossa equipe de suporte está à sua disposição. Responda a este e-mail ou fale conosco no suporte.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Rodapé -->
+          <tr>
+            <td align="center" style="padding: 20px 30px; border-top: 1px solid rgba(255, 255, 255, 0.06); font-size: 11px; color: #4b5563;">
+              © ${new Date().getFullYear()} Método Canal Dark • Dark Channel Academy. Todos os direitos reservados.
+            </td>
+          </tr>
+
+        </table>
+      </body>
+      </html>
     `,
   };
 
