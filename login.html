@@ -122,18 +122,9 @@
 
           <!-- Campo Senha -->
           <div class="space-y-1.5">
-            <div class="flex items-center justify-between">
-              <label for="login-password" class="block text-xs font-semibold text-gray-300">
-                Sua Senha
-              </label>
-              <button 
-                type="button" 
-                onclick="fillDefaultPassword()"
-                class="text-[11px] text-amber-400 hover:text-amber-300 font-semibold transition-colors flex items-center gap-1"
-              >
-                <span>Usar senha padrão</span>
-              </button>
-            </div>
+            <label for="login-password" class="block text-xs font-semibold text-gray-300">
+              Sua Senha
+            </label>
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -177,22 +168,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="m9 18 6-6-6-6"></path>
             </svg>
-        </form>
-
-        <!-- Caixa de Primeiro Acesso (Discreta e Útil) -->
-        <div id="default-password-box" class="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-3.5 flex items-center justify-between text-xs">
-          <div class="space-y-0.5">
-            <span class="text-gray-400 block text-[11px]">Comprou na PerfectPay? Senha padrão:</span>
-            <span class="font-mono font-bold text-yellow-400 tracking-wider">CANALDARK123</span>
-          </div>
-          <button 
-            type="button" 
-            onclick="fillDefaultPassword()"
-            class="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black font-bold text-[11px] transition-colors border border-amber-500/30"
-          >
-            Preencher
           </button>
-        </div>
+        </form>
 
         <!-- Suporte e Ajuda -->
         <div class="pt-2 border-t border-white/[0.06] flex items-center justify-center gap-1.5 text-xs text-gray-400 text-center">
@@ -307,12 +284,6 @@
       }
     }
 
-    function fillDefaultPassword() {
-      const pass = document.getElementById('login-password');
-      pass.value = 'CANALDARK123';
-      pass.focus();
-    }
-
     // Processamento de Login e Cadastro no Firebase
     async function handleAuthAction(event, mode) {
       event.preventDefault();
@@ -393,7 +364,7 @@
           alertBox.className = 'text-xs py-2.5 px-3.5 rounded-xl font-medium text-center bg-red-500/15 border border-red-500/30 text-red-300';
           
           if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
-            alertBox.textContent = 'E-mail ou senha incorretos. A senha inicial é CANALDARK123';
+            alertBox.textContent = 'E-mail ou senha incorretos. Verifique suas credenciais ou chame o suporte.';
           } else if (error.code === 'auth/user-not-found') {
             alertBox.textContent = 'Acesso não encontrado com este e-mail. Verifique a digitação ou chame o suporte abaixo.';
           } else if (error.code === 'auth/too-many-requests') {
